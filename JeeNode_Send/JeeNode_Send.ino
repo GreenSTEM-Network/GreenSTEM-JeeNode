@@ -9,6 +9,7 @@ ISR(WDT_vect) { Sleepy::watchdogEvent(); }
 //Define RF Node ID and Channel
 #define RF_NODEID 1
 #define RF_CHANNEL 100
+#define RF_FREQUENCY RF12_433MHZ
 #define TIME_BETWEEN_READS 5000 // in milliseconds
 
 //Define physical analog pins to read from
@@ -28,7 +29,7 @@ typedef struct {
 Payload data;
 
 void setup () {
-  rf12_initialize(RF_NODEID, RF12_915MHZ, RF_CHANNEL);
+  rf12_initialize(RF_NODEID, RF_FREQUENCY, RF_CHANNEL);
   Serial.begin(57600);
 }
 
