@@ -2,7 +2,7 @@
 #include <JeeLib.h>
 
 //Define RF Node ID and Channel
-#define RF_NODEID 1
+#define RF_NODEID 2
 #define RF_CHANNEL 100
 #define RF_FREQUENCY RF12_433MHZ
 #define TIME_BETWEEN_READS 5000 // in milliseconds
