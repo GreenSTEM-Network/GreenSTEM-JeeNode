@@ -29,13 +29,13 @@ void loop() {
   if (rf12_recvDone() && rf12_crc == 0 &&
               rf12_len == sizeof (data)) {
     data = *(Payload*) rf12_data;
-    Serial.println("Incoming Data");
-    Serial.println(data.soil_1);
-    Serial.print(' ');
-    Serial.println(data.soil_2);
-    Serial.print(' ');
-    Serial.println(data.soil_3);
-    Serial.print(' ');
+
+    Serial.print(data.soil_1);
+    Serial.print(',');
+    Serial.print(data.soil_2);
+    Serial.print(',');
+    Serial.print(data.soil_3);
+    Serial.print(',');
     Serial.println(data.temp);  
   }
 }
