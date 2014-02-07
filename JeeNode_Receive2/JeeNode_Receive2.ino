@@ -5,7 +5,6 @@
 #define RF_NODEID 2
 #define RF_CHANNEL 100
 #define RF_FREQUENCY RF12_433MHZ
-#define TIME_BETWEEN_READS 5000 // in milliseconds
 
 typedef struct {
   int nodeid;
@@ -13,6 +12,7 @@ typedef struct {
   float soil_2;
   float soil_3;
   float temp;
+  int vccRead;
 } Payload;
 
 Payload data;
@@ -36,6 +36,8 @@ void loop() {
     Serial.print(',');
     Serial.print(data.soil_3);
     Serial.print(',');
-    Serial.println(data.temp);  
+    Serial.print(data.temp);  
+    Serial.print(",");
+    Serial.println(data.vccRead);
   }
 }
