@@ -39,5 +39,9 @@ void loop() {
     Serial.print(data.temp);  
     Serial.print(",");
     Serial.println(data.vccRead);
+    
+    if (RF12_WANTS_ACK) {
+      rf12_sendStart(RF12_ACK_REPLY, 0 ,0);
+    }
   }
 }
