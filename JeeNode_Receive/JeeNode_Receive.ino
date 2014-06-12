@@ -4,7 +4,7 @@
 //Define RF Node ID and Channel
 #define RF_NODEID 2
 #define RF_CHANNEL 100
-#define RF_FREQUENCY RF12_433MHZ
+#define RF_FREQUENCY RF12_915MHZ
 
 typedef struct {
   int nodeid;
