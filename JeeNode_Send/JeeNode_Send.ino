@@ -6,7 +6,7 @@
 //Define RF Node ID and Channel
 #define RF_NODEID 1
 #define RF_CHANNEL 100
-#define RF_FREQUENCY RF12_433MHZ
+#define RF_FREQUENCY RF12_915MHZ
 #define TIME_BETWEEN_READS 10000 // in milliseconds
 
 //Use a watchdog timer for low-power sleep mode
@@ -58,13 +58,13 @@ void loop () {
   for (int i=0; i<5; i++){
      data.soil_1 = analogRead(0);
      soil1_sum += data.soil_1;
-     delay(10);                                                                                                                      
+     delay(100);                                                                                                                      
      data.soil_2 = analogRead(1);
      soil2_sum += data.soil_2;
-     delay(10);  
+     delay(100);  
      data.soil_3 = analogRead(2);
      soil3_sum += data.soil_3;
-     delay(10);    
+     delay(100);    
      data.temp = analogRead(3);
      temp_sum += data.temp;
      delay(500);
@@ -77,6 +77,7 @@ void loop () {
   data.vccRead = vccRead();
   
   //temp conversion: Fahrenheit = (((sensorvalue*3.3/1024)/.02)*1.8) + 32
+  data.temp = (((data.temp*3.3/1024)/.02)*1.8) + 32;
   
   // send packet out
   rf12_sleep(RF12_WAKEUP);
@@ -95,8 +96,8 @@ void loop () {
   //for (int k=0; k <30; k++) {
    //Sleepy::loseSomeTime(60337);
     
-  // go to sleep for 10 secs  
-  for (int k=0; k <1; k++) {
+  // go to sleep for approx 10 min  
+  for (int k=0; k < 59; k++) {
     Sleepy::loseSomeTime(TIME_BETWEEN_READS);
   }
 }
